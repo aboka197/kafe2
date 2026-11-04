@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMEN | Кафе & Лаунж</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0b0d;
+            --card-bg: #151518;
+            --accent-gold: #d4af37;
+            --accent-gold-hover: #f1c40f;
+            --text-main: #f4f4f6;
+            --text-muted: #9ba1a6;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 11, 13, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 7%;
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .whatsapp-btn-header {
+            background: var(--accent-gold);
+            color: #000;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .whatsapp-btn-header:hover {
+            background: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(11,11,13,0.5), rgba(11,11,13,0.9)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInDown 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            margin-bottom: 20px;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: #000;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold-hover);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        /* Sections General */
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-img {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Menu Section */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
+            display: none; /* Managed by JS */
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .menu-item.show {
+            display: block;
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .menu-img {
+            height: 200px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .menu-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .menu-img img {
+            transform: scale(1.1);
+        }
+
+        .menu-details {
+            padding: 20px;
+        }
+
+        .menu-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .menu-price {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .menu-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .order-item-btn {
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 650;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .order-item-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        /* Atmosphere / Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            height: 300px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Contacts & Footer */
+        .footer {
+            background: #070709;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 80px 7% 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold);
+        }
+
+        .footer-col p, .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            background: var(--card-bg);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Floating WhatsApp Widget */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media(max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">LUMEN</a>
+        <ul class="nav-links">
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#menu">Меню</a></li>
+            <li><a href="#atmosphere">Атмосфера</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+        <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20забронировать%20столик%20в%20кафе." target="_blank" class="whatsapp-btn-header">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Изысканный вкус и <span>уютная атмосфера</span></h1>
+            <p>Место, где встречаются авторская кухня, ароматный кофе и незабываемые моменты вашей жизни.</p>
+            <div class="btn-group">
+                <a href="#menu" class="btn-primary">Посмотреть меню</a>
+                <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20сделать%20заказ." target="_blank" class="btn-outline">Заказать в WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-text">
+                <h5 class="section-subtitle" style="text-align: left; margin-bottom: 10px;">Добро пожаловать</h5>
+                <h3>История о страсти к кулинарии и комфорту</h3>
+                <p>Наше кафе создано для тех, кто ценит эстетику в каждой детали. Мы отбираем самые свежие ингредиенты, обжариваем зёрна премиальных сортов и создаем уникальные рецепты блюд.</p>
+                <p>Приходите на утренний кофе, деловой обед или романтический ужин — наша атмосфера подарит вам покой и удовольствие.</p>
+                <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20забронировать%20столик." target="_blank" class="btn-primary" style="display: inline-block; margin-top: 15px;">Забронировать столик</a>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" alt="Интерьер кафе">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2 class="section-title">Наше Меню</h2>
+        <p class="section-subtitle">Выберите категорию и насладитесь вкусом</p>
+
+        <div class="menu-tabs">
+            <button class="tab-btn active" onclick="filterMenu('coffee', event)">☕ Кофе & Напитки</button>
+            <button class="tab-btn" onclick="filterMenu('dishes', event)">🍽️ Основные блюда</button>
+            <button class="tab-btn" onclick="filterMenu('desserts', event)">🍰 Десерты</button>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Кофе -->
+            <div class="menu-item coffee show">
+                <div class="menu-img"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Капучино"></div>
+                <div class="menu-details">
+                    <div class="menu-header-flex">
+                        <span class="menu-name">Капучино Классик</span>
+                        <span class="menu-price">1 400 ₸</span>
+                    </div>
+                    <p class="menu-desc">Двойной эспрессо с нежной молочной пенкой и бархатистой текстурой.</p>
+                    <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20заказать%20Капучино%20Классик." target="_blank" class="order-item-btn">Заказать</a>
+                </div>
+            </div>
+
+            <div class="menu-item coffee show">
+                <div class="menu-img"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80" alt="Раф"></div>
+                <div class="menu-details">
+                    <div class="menu-header-flex">
+                        <span class="menu-name">Ванильный Раф</span>
+                        <span class="menu-price">1 600 ₸</span>
+                    </div>
+                    <p class="menu-desc">Авторский кофейный напиток на сливках с натуральным ванильным сиропом.</p>
+                    <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20заказать%20Ванильный%20Раф." target="_blank" class="order-item-btn">Заказать</a>
+                </div>
+            </div>
+
+            <div class="menu-item coffee show">
+                <div class="menu-img"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=600&q=80" alt="Матча"></div>
+                <div class="menu-details">
+                    <div class="menu-header-flex">
+                        <span class="menu-name">Матча Латте</span>
+                        <span class="menu-price">1 700 ₸</span>
+                    </div>
+                    <p class="menu-desc">Японский зелёный чай матча премиум класса с растительным молоком.</p>
+                    <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20заказать%20Матча%20Латте." target="_blank" class="order-item-btn">Заказать</a>
+                </div>
+            </div>
+
+            <!-- Блюда -->
+            <div class="menu-item dishes">
+                <div class="menu-img"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80" alt="Бургер"></div>
+                <div class="menu-details">
+                    <div class="menu-header-flex">
+                        <span class="menu-name">Фирменный Бургер LUMEN</span>
+                        <span class="menu-price">3 800 ₸</span>
+                    </div>
+                    <p class="menu-desc">Сочная говяжья котлета, сыр чеддер, хрустящий бекон и фирменный соус.</p>
+                    <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20заказать%20Фирменный%20Бургер%20LUMEN." target="_blank" class="order-item-btn">Заказать</a>
+                </div>
+            </div>
+
+            <div class="menu-item dishes">
+                <div class="menu-img"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="Салат Цезарь"></div>
+                <div class="menu-details">
+                    <div class="menu-header-flex">
+                        <span class="menu-name">Цезарь с курицей</span>
+                        <span class="menu-price">2 900 ₸</span>
+                    </div>
+                    <p class="menu-desc">Хрустящий салат айсберг, нежное куриное филе гриль, черри и соус цезарь.</p>
+                    <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20заказать%20Цезарь%20с%20курицей." target="_blank" class="order-item-btn">Заказать</a>
+                </div>
+            </div>
+
+            <div class="menu-item dishes">
+                <div class="menu-img"><img src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=600&q=80" alt="Пицца"></div>
+                <div class="menu-details">
+                    <div class="menu-header-flex">
+                        <span class="menu-name">Пицца Четыре Сыра</span>
+                        <span class="menu-price">4 200 ₸</span>
+                    </div>
+                    <p class="menu-desc">Изысканное сочетание моцареллы, дорблю, пармезана и нежного крем-чиза.</p>
+                    <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20заказать%20Пиццу%20Четыре%20Сыра." target="_blank" class="order-item-btn">Заказать</a>
+                </div>
+            </div>
+
+            <!-- Десерты -->
+            <div class="menu-item desserts">
+                <div class="menu-img"><img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" alt="Чизкейк"></div>
+                <div class="menu-details">
+                    <div class="menu-header-flex">
+                        <span class="menu-name">Нью-Йорк Чизкейк</span>
+                        <span class="menu-price">1 900 ₸</span>
+                    </div>
+                    <p class="menu-desc">Классический воздушный десерт из нежнейшего творожного сыра.</p>
+                    <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20заказать%20Нью-Йорк%20Чизкейк." target="_blank" class="order-item-btn">Заказать</a>
+                </div>
+            </div>
+
+            <div class="menu-item desserts">
+                <div class="menu-img"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" alt="Брауни"></div>
+                <div class="menu-details">
+                    <div class="menu-header-flex">
+                        <span class="menu-name">Шоколадный Брауни</span>
+                        <span class="menu-price">1 800 ₸</span>
+                    </div>
+                    <p class="menu-desc">Насыщенный темный шоколад с добавлением грецкого ореха и шариком мороженого.</p>
+                    <a href="https://wa.me/77051237680?text=Здравствуйте!%20Хочу%20заказать%20Шоколадный%20Брауни." target="_blank" class="order-item-btn">Заказать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Atmosphere Section -->
+    <section id="atmosphere">
+        <h2 class="section-title">Атмосфера</h2>
+        <p class="section-subtitle">Загляните в наш уютный уголок</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&w=600&q=80" alt="Интерьер"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=600&q=80" alt="Кофейня"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=600&q=80" alt="Вечер"></div>
+        </div>
+    </section>
+
+    <!-- Footer / Contacts -->
+    <footer id="contacts" class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>LUMEN Café</h4>
+                <p>Ваше любимое место для отдыха, встреч и наслаждения вкусной едой каждый день.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/77051237680" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <p><i class="fas fa-phone-alt" style="color:var(--accent-gold); margin-right: 8px;"></i> +7 (705) 123-76-80</p>
+                <p><i class="fas fa-clock" style="color:var(--accent-gold); margin-right: 8px;"></i> Ежедневно: 09:00 – 23:00</p>
+                <p><i class="fas fa-map-marker-alt" style="color:var(--accent-gold); margin-right: 8px;"></i> ул. Центральная, 42</p>
+            </div>
+            <div class="footer-col">
+                <h4>Быстрая связь</h4>
+                <p>Хотите забронировать столик или задать вопрос? Напишите нам в WhatsApp в один клик!</p>
+                <a href="https://wa.me/77051237680?text=Здравствуйте!%20У%20меня%20вопрос%20по%20поводу%20кафе." target="_blank" class="btn-primary" style="display: inline-block; text-align: center; margin-top: 10px;">Написать в WhatsApp</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2026 LUMEN Café. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/77051237680?text=Здравствуйте!%20Пишу%20с%20вашего%20сайта." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript for Interactive Menu Tabs -->
+    <script>
+        function filterMenu(category, event) {
+            // Удаляем активный класс с кнопок
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Добавляем активный класс текущей кнопке
+            event.target.classList.add('active');
+
+            // Фильтруем элементы меню
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                item.classList.remove('show');
+                if (item.classList.contains(category)) {
+                    setTimeout(() => {
+                        item.classList.add('show');
+                    }, 100);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
